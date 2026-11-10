@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="LUMO project by Boyu Yang.">
+  <title>LUMO — Boyu Yang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cursor.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fff;
+      --ink: #181818;
+      --accent: #b8d947;
+      --page-gutter: clamp(12px, 1vw, 20px);
+      --content-width: 100%;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-shell {
+      width: min(100%, var(--content-width));
+      margin-inline: auto;
+      padding-inline: var(--page-gutter);
+    }
+
+    .topbar {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      letter-spacing: .035em;
+      transform: translateY(-8px);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      width: 38px;
+      height: 38px;
+      text-decoration: none;
+      transition: color .25s ease, transform .25s ease;
+    }
+
+    .wordmark img { display: block; width: 100%; height: 100%; object-fit: contain; filter: grayscale(1); }
+    .wordmark:hover { transform: scale(1.12) rotate(-5deg); }
+    .nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      color: var(--paper);
+      -webkit-text-fill-color: var(--paper);
+      font-family: "Manrope", Arial, sans-serif;
+      font-size: clamp(18px, 1.6vw, 24px);
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1;
+      text-decoration: none;
+      -webkit-text-stroke: 3px var(--ink);
+      paint-order: stroke fill;
+      paint-order: stroke fill;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .nav a:hover { color: var(--ink); -webkit-text-fill-color: var(--ink); transform: scale(1.12); }
+    .nav a:focus-visible, .back-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .project-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      padding: clamp(42px, 7vw, 96px) 0 24px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Manrope", Arial, sans-serif;
+      font-size: clamp(38px, 6.5vw, 82px);
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .back-link {
+      padding-bottom: 7px;
+      color: #666;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .back-link:hover { color: var(--ink); }
+
+    .project-gallery {
+      display: grid;
+      gap: clamp(12px, 1.2vw, 20px);
+      padding-bottom: clamp(72px, 10vw, 140px);
+    }
+
+    .project-gallery img {
+      display: block;
+      width: 100%;
+      max-width: none;
+      height: auto;
+      background: #f5f5f2;
+    }
+
+    @media (max-width: 640px) {
+      .topbar { height: 70px; }
+      .nav { gap: 12px; }
+      .nav a { font-size: 15px; }
+      .project-heading { align-items: start; flex-direction: column; padding-top: 46px; }
+      .project-gallery { gap: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <header class="topbar page-shell">
+    <a class="wordmark" href="index.html#top" aria-label="Boyu Yang, home"><img src="assets/profile.png" alt=""></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html#work">WORK</a>
+      <a href="index.html#about">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <div class="project-heading">
+      <div class="detail-title-block">
+        <svg class="detail-title-svg" viewBox="0 0 1000 150" role="img" aria-label="PERFORM" preserveAspectRatio="xMinYMid meet"><text x="0" y="112"><tspan>P</tspan><tspan>E</tspan><tspan>R</tspan><tspan>F</tspan><tspan>O</tspan><tspan>R</tspan><tspan>M</tspan></text></svg>
+        <p class="detail-subtitle">Tangible User Interface (TUI) | Product Design | Co-design<br>Individual Work | 2025.06-2025.10</p>
+      </div>
+      <a class="back-link" href="index.html#work">← Selected work</a>
+    </div>
+    <section class="project-gallery" aria-label="LUMO project images in order">
+      <img src="assets/project-details/lumo/01-lumo.jpg" alt="LUMO project presentation image 1 of 4" fetchpriority="high" decoding="async">
+      <img src="assets/project-details/lumo/02-lumo.jpg" alt="LUMO project presentation image 2 of 4" loading="lazy" decoding="async">
+      <img src="assets/project-details/lumo/03-lumo.jpg" alt="LUMO project presentation image 3 of 4" loading="lazy" decoding="async">
+      <img src="assets/project-details/lumo/04-lumo.jpg" alt="LUMO project presentation image 4 of 4" loading="lazy" decoding="async">
+    </section>
+  </main>
+</body>
+</html>

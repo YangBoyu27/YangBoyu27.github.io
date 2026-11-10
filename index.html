@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Boyu Yang portfolio.">
+  <title>Boyu Yang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cursor.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fff;
+      --ink: #181818;
+      --muted: #777;
+      --line: #e8e8e5;
+      --accent: #b8d947;
+      --page-gutter: clamp(12px, 1vw, 20px);
+      --content-width: 100%;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-shell {
+      width: min(100%, var(--content-width));
+      margin-inline: auto;
+      padding-inline: var(--page-gutter);
+    }
+
+    .topbar {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      letter-spacing: .035em;
+      transform: translateY(-8px);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      width: 38px;
+      height: 38px;
+      text-decoration: none;
+      transition: color .25s ease, transform .25s ease;
+    }
+
+    .wordmark img { display: block; width: 100%; height: 100%; object-fit: contain; filter: grayscale(1); }
+    .wordmark:hover { transform: scale(1.12) rotate(-5deg); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2vw, 28px);
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      color: var(--paper);
+      -webkit-text-fill-color: var(--paper);
+      font-family: "Manrope", Arial, sans-serif;
+      font-size: clamp(18px, 1.6vw, 24px);
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1;
+      text-decoration: none;
+      -webkit-text-stroke: 2px var(--ink);
+      paint-order: stroke fill;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .nav a:hover { color: var(--ink); -webkit-text-fill-color: var(--ink); transform: scale(1.12); }
+
+    .hero {
+      min-height: min(74vh, 780px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 30%);
+      align-items: start;
+      gap: clamp(28px, 4.5vw, 80px);
+      padding-top: clamp(38px, 7vw, 96px);
+      padding-bottom: clamp(56px, 8vw, 112px);
+    }
+
+    .hero-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
+    }
+
+    .section-label, .project-meta, .footer-note {
+      font-size: 11px;
+      line-height: 1.4;
+      letter-spacing: .08em;
+    }
+
+    .hero-title-svg {
+      display: block;
+      width: min(100%, 960px);
+      height: auto;
+      margin-left: -5px;
+      overflow: visible;
+    }
+
+    .hero-title-svg text {
+      font-family: "Manrope", Arial, sans-serif;
+      font-size: 140px;
+      font-weight: 700;
+      letter-spacing: 0;
+      paint-order: stroke fill;
+      stroke: var(--ink);
+      stroke-width: 7.6px;
+      stroke-linejoin: miter;
+      stroke-linecap: butt;
+    }
+
+    .hero-title-svg tspan {
+      fill: var(--paper);
+      stroke: inherit;
+      cursor: default;
+      transition: fill .2s ease;
+    }
+
+    .hero-title-svg tspan:hover { fill: var(--ink); }
+
+    .hero-intro {
+      max-width: 360px;
+      margin: auto 0 0;
+      color: #777;
+      font-size: clamp(14px, 1.25vw, 17px);
+      line-height: 1.65;
+      letter-spacing: .005em;
+    }
+
+    .name-letter {
+      display: inline;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      transform-origin: 50% 85%;
+      transition: color .2s ease, -webkit-text-fill-color .2s ease;
+    }
+
+    .name-letter:hover {
+      color: var(--ink);
+      -webkit-text-fill-color: var(--ink);
+      transform: none;
+    }
+
+    .hero-portrait {
+      display: block;
+      width: min(100%, clamp(220px, 19vw, 300px));
+      max-height: min(40vh, 347px);
+      object-fit: contain;
+      object-position: center bottom;
+      justify-self: end;
+      margin-right: clamp(12px, 1.5vw, 24px);
+      --tilt-x: 0deg;
+      --tilt-y: 0deg;
+      --shift-x: 0px;
+      --shift-y: 0px;
+      --portrait-scale: 1;
+      transform: perspective(900px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translate3d(var(--shift-x), var(--shift-y), 0) scale(var(--portrait-scale));
+      transform-style: preserve-3d;
+      transition: transform .35s cubic-bezier(.2, .8, .2, 1), filter .35s ease;
+      will-change: transform;
+    }
+
+    .hero-portrait:hover {
+      --portrait-scale: 1.22;
+      filter: drop-shadow(0 16px 18px rgb(0 0 0 / 10%));
+    }
+
+    .work-section { padding-bottom: clamp(90px, 12vw, 170px); }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      padding: 17px 0;
+      border-top: 1px solid var(--ink);
+    }
+
+    .section-label { margin: 0; }
+    .work-count { color: var(--muted); font-size: 11px; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .work-categories {
+      display: flex;
+      align-items: baseline;
+      gap: clamp(40px, 4vw, 60px);
+      flex-wrap: wrap;
+    }
+
+    .work-category {
+      appearance: none;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--paper);
+      -webkit-text-fill-color: var(--paper);
+      font-family: "Manrope", Arial, sans-serif;
+      font-size: clamp(18px, 1.8vw, 24px);
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1;
+      text-decoration: none;
+      -webkit-text-stroke: 1px var(--ink);
+      paint-order: stroke fill;
+      cursor: pointer;
+      transform-origin: left center;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .work-category[aria-pressed="true"] {
+      color: var(--ink);
+      -webkit-text-fill-color: var(--ink);
+    }
+
+    .work-category:hover,
+    .work-category:focus-visible {
+      color: var(--ink);
+      -webkit-text-fill-color: var(--ink);
+      transform: scale(1.12);
+    }
+
+    .work-category:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(18px, 2.5vw, 36px);
+      row-gap: clamp(24px, 4vw, 56px);
+    }
+
+    .project-card { min-width: 0; }
+
+    .project-link { display: block; color: inherit; text-decoration: none; }
+
+    .project-image {
+      position: relative;
+      aspect-ratio: 1.44 / 1;
+      overflow: hidden;
+      background: #fafaf8;
+    }
+
+    .project-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .project-card:hover .project-image img { transform: scale(1.025); }
+
+    .project-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 18px;
+      padding-top: 16px;
+    }
+
+    .project-copy { min-width: 0; flex: 1 1 auto; }
+
+    .project-title {
+      margin: 0 0 6px;
+      font-size: clamp(17px, 2vw, 23px);
+      line-height: 1.15;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+
+    .project-type { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .project-meta {
+      flex: 0 1 40%;
+      max-width: 40%;
+      margin: 0;
+      color: #777;
+      text-align: right;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .about-section {
+      display: grid;
+      grid-template-columns: minmax(240px, .75fr) minmax(0, 2fr);
+      gap: clamp(40px, 7vw, 120px);
+      padding: clamp(24px, 4vw, 56px) 0 clamp(90px, 12vw, 164px);
+      border-top: 1px solid var(--line);
+    }
+
+    .about-sidebar, .about-details { min-width: 0; }
+
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .about-title {
+      margin: 0 0 14px;
+      font-size: clamp(18px, 1.65vw, 24px);
+      line-height: 1;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .about-photo-paper {
+      width: min(100%, 330px);
+      margin-top: 12px;
+      padding: 9px;
+      background: #fff;
+      box-shadow: 0 14px 30px rgb(0 0 0 / 12%), 0 2px 5px rgb(0 0 0 / 8%);
+      transform: perspective(900px) rotateX(var(--paper-tilt-x, 0deg)) rotateY(var(--paper-tilt-y, 0deg)) rotate(-2deg) translate3d(var(--paper-shift-x, 0px), var(--paper-shift-y, 0px), 0);
+      transform-origin: center;
+      animation: paper-drift 5.5s ease-in-out infinite;
+      transition: box-shadow .3s ease, transform .2s ease-out;
+      will-change: transform;
+    }
+
+    .about-photo-paper:hover {
+      box-shadow: 0 20px 38px rgb(0 0 0 / 17%), 0 3px 7px rgb(0 0 0 / 10%);
+    }
+
+    .about-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .about-identity {
+      display: grid;
+      gap: 4px;
+      margin: 18px 0 22px;
+    }
+
+    .about-name {
+      margin: 0;
+      font-size: clamp(16px, 1.35vw, 20px);
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .about-address {
+      margin: 0;
+      color: #666;
+      font-size: clamp(12px, .85vw, 14px);
+      line-height: 1.4;
+    }
+
+    @keyframes paper-drift {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -8px; }
+    }
+
+    .about-heading {
+      margin: 0 0 12px;
+      color: #ff8b8f;
+      font-size: clamp(17px, 1.55vw, 23px);
+      line-height: 1;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .about-group { margin-bottom: clamp(34px, 4vw, 56px); }
+    .about-group:last-child { margin-bottom: 0; }
+    .about-group-content { min-width: 0; }
+
+    .about-entry {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 28px;
+      row-gap: 4px;
+      margin-bottom: 18px;
+      transition: transform .22s ease;
+    }
+
+    .about-entry:last-child { margin-bottom: 0; }
+
+    .about-entry strong {
+      font-size: clamp(14px, 1.1vw, 17px);
+      line-height: 1.25;
+      font-weight: 700;
+      transition: color .22s ease;
+    }
+
+    .about-entry:hover { transform: translateX(3px); }
+    .about-entry:hover strong { color: #df7379; }
+
+    .about-date {
+      color: #555;
+      font-size: clamp(11px, .85vw, 13px);
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    .about-entry span:not(.about-date) {
+      color: #555;
+      font-size: clamp(12px, .95vw, 14px);
+      line-height: 1.4;
+    }
+
+    .about-standard-entry {
+      margin-bottom: 18px;
+      transition: transform .22s ease;
+    }
+
+    .about-standard-entry:last-child { margin-bottom: 0; }
+    .about-standard-entry:hover { transform: translateX(3px); }
+
+    .about-standard-head,
+    .about-standard-detail {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .about-standard-head strong {
+      color: var(--ink);
+      font-size: clamp(14px, 1.1vw, 17px);
+      line-height: 1.3;
+    }
+
+    .about-standard-location,
+    .about-standard-date {
+      flex: 0 0 auto;
+      color: #555;
+      font-size: clamp(11px, .85vw, 13px);
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    .about-standard-detail {
+      justify-content: flex-start;
+      margin-top: 3px;
+      color: #555;
+      font-size: clamp(12px, .95vw, 14px);
+      line-height: 1.4;
+    }
+
+    .about-standard-detail em { color: var(--ink); font-style: italic; }
+    .about-standard-detail .about-standard-date { margin-left: auto; }
+    .about-standard-note {
+      margin: 2px 0 0;
+      color: #555;
+      font-size: clamp(12px, .95vw, 14px);
+      line-height: 1.4;
+    }
+
+    .about-project-entry {
+      display: block;
+      margin-bottom: 24px;
+      transition: transform .22s ease;
+    }
+
+    .about-project-entry:last-child { margin-bottom: 0; }
+    .about-project-entry:hover { transform: translateX(3px); }
+
+    .about-project-head,
+    .about-project-role {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .about-project-head strong {
+      color: var(--ink);
+      font-size: clamp(14px, 1.1vw, 17px);
+      line-height: 1.3;
+    }
+
+    .about-project-location,
+    .about-project-date {
+      flex: 0 0 auto;
+      color: #555;
+      font-size: clamp(11px, .85vw, 13px);
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    .about-project-role {
+      justify-content: flex-start;
+      margin-top: 3px;
+      color: #555;
+      font-size: clamp(12px, .95vw, 14px);
+      line-height: 1.4;
+    }
+
+    .about-project-role em { color: var(--ink); font-style: italic; }
+    .about-project-role .about-project-date { margin-left: auto; }
+    .about-project-bullets {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: #555;
+      font-size: clamp(12px, .95vw, 14px);
+      line-height: 1.45;
+    }
+
+    .about-project-bullets li { margin: 3px 0; }
+
+    .about-contact {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+
+    .about-contact-title {
+      margin: 0 0 3px;
+      color: #ff8b8f;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .about-contact a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(13px, 1vw, 15px);
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .about-contact-icon {
+      display: block;
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      fill: currentColor;
+    }
+
+    .about-contact a { transition: color .2s ease, transform .2s ease; }
+    .about-contact a:hover { color: #df7379; text-decoration: underline; text-underline-offset: 4px; transform: translateX(2px); }
+
+    .about-location { color: #555 !important; }
+
+    .about-skills-label {
+      margin: 0 0 14px;
+      color: #555;
+      font-size: 12px;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .about-skills {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .about-skill {
+      display: grid;
+      justify-items: center;
+      gap: 7px;
+      min-width: 0;
+      color: #555;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .about-skill-icon {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      padding: 4px;
+      object-fit: contain;
+      opacity: .72;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .about-skill:hover .about-skill-icon {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 76px;
+      border-top: 1px solid var(--line);
+      color: #777;
+    }
+
+    .footer-note { margin: 0; }
+    .contact-link { color: var(--ink); font-size: 12px; text-decoration: none; }
+    .contact-link span { color: #9eaf3c; padding-left: 5px; }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 44px;
+        padding-top: 56px;
+        padding-bottom: 78px;
+      }
+      .topbar { height: 70px; }
+      .wordmark { font-size: 17px; }
+      .nav { gap: 12px; }
+      .nav a { font-size: 15px; }
+      .section-heading { align-items: flex-end; flex-wrap: wrap; row-gap: 12px; }
+      .work-categories { gap: 20px; }
+      .work-category { font-size: 15px; }
+      .hero-title-svg { margin-left: -2px; }
+      .hero-portrait { width: min(47vw, 193px); max-height: 231px; }
+      .project-grid { grid-template-columns: 1fr; row-gap: 43px; }
+      .project-image { aspect-ratio: 1.25 / 1; }
+      .project-info { flex-direction: column; gap: 8px; }
+      .project-meta { max-width: none; text-align: left; }
+      .about-section { grid-template-columns: 1fr; gap: 26px; }
+      .about-title { margin-bottom: 24px; }
+      .about-photo-paper { width: min(100%, 270px); margin-top: 8px; }
+      .about-contact { margin-top: 0; }
+      .about-skills { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .about-entry { grid-template-columns: 1fr; gap: 3px; }
+      .about-date { white-space: normal; }
+      .footer { min-height: 72px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .about-photo-paper { animation: none; transform: rotate(-2deg); }
+    }
+
+    @media (hover: none) {
+      .work-category:hover, .work-category:focus-visible { transform: none; }
+    }
+
+    @media (hover: none) {
+      .hero-portrait { will-change: auto; }
+      .hero-portrait:hover { --portrait-scale: 1; filter: none; }
+      .hero-title-svg tspan:hover { fill: var(--paper); }
+      .about-photo-paper:hover, .about-entry:hover, .about-contact a:hover { transform: none; filter: none; }
+      .about-photo-paper { animation: none; transform: rotate(-2deg); }
+      .about-entry:hover strong, .about-contact a:hover { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar page-shell">
+    <a class="wordmark" href="#top" aria-label="Boyu Yang, home"><img decoding="async" src="assets/profile.png" alt=""></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#work">WORK</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main id="top" class="page-shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <svg id="hero-title" class="hero-title-svg" viewBox="0 0 1000 180" role="img" aria-label="BOYU YANG" preserveAspectRatio="xMinYMid meet">
+          <text x="0" y="140"><tspan>B</tspan><tspan>O</tspan><tspan>Y</tspan><tspan>U</tspan><tspan dx="48">Y</tspan><tspan>A</tspan><tspan>N</tspan><tspan>G</tspan></text>
+        </svg>
+        <p class="hero-intro">A designer who enjoys exploring different mediums to create.</p>
+      </div>
+      <img decoding="async" class="hero-portrait" src="assets/profile.png" alt="">
+    </section>
+
+    <section id="work" class="work-section" aria-labelledby="work-title">
+      <div class="section-heading">
+        <h2 id="work-title" class="visually-hidden">Selected work</h2>
+        <nav class="work-categories" aria-label="Project categories">
+          <button class="work-category" type="button" data-work-category="interaction-industrial" aria-controls="project-grid" aria-pressed="true">Interaction &amp; Industrial</button>
+          <button class="work-category" type="button" data-work-category="architecture" aria-controls="project-grid" aria-pressed="false">Architecture</button>
+        </nav>
+        <span class="work-count">Projects / 2025-2026</span>
+      </div>
+      <div id="project-grid" class="project-grid">
+        <article class="project-card" data-category="interaction-industrial">
+          <a class="project-link" href="inhabit.html" aria-label="View Inhabit project">
+            <div class="project-image"><img src="assets/covers/inhabit.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Inhabit project cover"></div>
+            <div class="project-info">
+              <div class="project-copy">
+                <h3 class="project-title">Inhabit</h3>
+                <p class="project-type">Movable Structures | Prototyping | Residential Design</p>
+              </div>
+              <p class="project-meta">Individual Work | 2026.04-2026.08</p>
+            </div>
+          </a>
+        </article>
+        <article class="project-card" data-category="interaction-industrial">
+          <a class="project-link" href="express.html" aria-label="View Express project">
+            <div class="project-image"><img src="assets/covers/express.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Express project cover"></div>
+            <div class="project-info">
+              <div class="project-copy">
+                <h3 class="project-title">Express</h3>
+                <p class="project-type">Speculative Design | Flexible Wearable Patch | Urban Mapping</p>
+              </div>
+              <p class="project-meta">Individual Work | 2026.01-2026.04</p>
+            </div>
+          </a>
+        </article>
+        <article class="project-card" data-category="interaction-industrial">
+          <a class="project-link" href="lumo.html" aria-label="View LUMO project">
+            <div class="project-image"><img src="assets/covers/lumo.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="LUMO project cover"></div>
+            <div class="project-info">
+              <div class="project-copy">
+                <h3 class="project-title">LUMO</h3>
+                <p class="project-type">Tangible User Interface (TUI) | Product Design | Co-design</p>
+              </div>
+              <p class="project-meta">Individual Work | 2025.06-2025.10</p>
+            </div>
+          </a>
+        </article>
+        <article class="project-card" data-category="interaction-industrial">
+          <a class="project-link" href="perceive.html" aria-label="View Perceive project">
+            <div class="project-image"><img src="assets/covers/perceive.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Perceive project cover"></div>
+            <div class="project-info">
+              <div class="project-copy">
+                <h3 class="project-title">Perceive</h3>
+                <p class="project-type">VR | Experience Design | EEG Testing</p>
+              </div>
+              <p class="project-meta">Individual Work | 2025.03-2025.06</p>
+            </div>
+          </a>
+        </article>
+        <article class="project-card" data-category="interaction-industrial">
+          <a class="project-link" href="he-seating.html" aria-label="View Hé Seating project">
+            <div class="project-image"><img src="assets/covers/he-seating.jpg" width="1920" height="1168" loading="lazy" decoding="async" alt="Hé Seating project cover"></div>
+            <div class="project-info">
+              <div class="project-copy">
+                <h3 class="project-title">Hé Seating</h3>
+                <p class="project-type">Interactive Installation</p>
+              </div>
+              <p class="project-meta">Internship | 2025.09-2025.10</p>
+            </div>
+          </a>
+        </article>
+        <article class="project-card" data-category="interaction-industrial">
+          <a class="project-link" href="malgic-kitchen.html" aria-label="View mAlgic Kitchen project">
+            <div class="project-image"><img src="assets/covers/malgic-kitchen.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="mAlgic KItchen project cover"></div>
+            <div class="project-info">
+              <div class="project-copy">
+                <h3 class="project-title">mAlgic KItchen</h3>
+                <p class="project-type">Experience Design | Prototyping | Co-design</p>
+              </div>
+              <p class="project-meta">Team Work | 2026.04-2026.07</p>
+            </div>
+          </a>
+        </article>
+        <article class="project-card" data-category="architecture">
+          <a class="project-link" href="kill-the-skyscraper.html" aria-label="View Kill the skyscraper project">
+            <div class="project-image"><img src="assets/covers/kill-the-skyscraper.jpg" width="1440" height="900" loading="lazy" decoding="async" alt="Kill the skyscraper project cover"></div>
+            <div class="project-info">
+              <div class="project-copy">
+                <h3 class="project-title">Kill the skyscraper</h3>
+                <p class="project-type">Urban Design | Speculative Architecture</p>
+              </div>
+              <p class="project-meta">Individual Work | 2025.11-2026.01</p>
+            </div>
+          </a>
+        </article>
+        <article class="project-card" data-category="architecture">
+          <a class="project-link" href="folded-mountains.html" aria-label="View Folded Mountains, Winding Paths project">
+            <div class="project-image"><img src="assets/covers/folded-mountains.jpg" width="3674" height="2588" loading="lazy" decoding="async" alt="Folded Mountains, Winding Paths project cover"></div>
+            <div class="project-info">
+              <div class="project-copy">
+                <h3 class="project-title">Folded Mountains, Winding Paths</h3>
+                <p class="project-type">Architecture | Museum Design | Narrative Design</p>
+              </div>
+              <p class="project-meta">Individual Work | 2025.02-2025.05</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about-section" aria-labelledby="about-title">
+      <div class="about-sidebar">
+        <h2 id="about-title" class="about-title">ABOUT ME</h2>
+        <div class="about-photo-paper" aria-label="Portrait photograph of Boyu Yang">
+          <img loading="lazy" decoding="async" width="628" height="682" class="about-photo" src="assets/about-photo.png" alt="Boyu Yang in Beijing">
+        </div>
+        <div class="about-identity">
+          <p class="about-name">BOYU YANG</p>
+          <p class="about-address">BEIJING, CHINA</p>
+        </div>
+        <p class="about-skills-label">Design &amp; Technical</p>
+        <div class="about-skills" aria-label="Design and technical skills">
+          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/arduino.svg" alt=""><span>Arduino</span></div>
+          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/unity.svg" alt=""><span>Unity</span></div>
+          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/rhino.svg" alt=""><span>Rhino</span></div>
+          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/blender.svg" alt=""><span>Blender</span></div>
+          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/sketchup.svg" alt=""><span>SketchUp</span></div>
+          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/autocad.svg" alt=""><span>AutoCAD</span></div>
+          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/photoshop.svg" alt=""><span>Photoshop</span></div>
+          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/figma.svg" alt=""><span>Figma</span></div>
+        </div>
+        <div class="about-contact" aria-label="Contact information">
+          <h3 class="about-contact-title">CONTACT</h3>
+          <a href="mailto:boyuyang@yeah.net">
+            <svg class="about-contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8.2L4.7 7H4v10h16V7h-.7L12 13.2Zm0-2.1L19.1 7H4.9l7.1 4.1Z"/></svg>
+            <span>boyuyang@yeah.net</span>
+          </a>
+          <a href="tel:+8618923936560">
+            <svg class="about-contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 9.4 2a1.7 1.7 0 0 1 2 1l1.2 3.1a1.7 1.7 0 0 1-.5 1.9l-1.7 1.4a15.4 15.4 0 0 0 5.2 5.2l1.4-1.7a1.7 1.7 0 0 1 1.9-.5l3.1 1.2a1.7 1.7 0 0 1 1 2l-.8 2.8a2 2 0 0 1-2 1.5C10.4 20 4 13.6 4.1 4.8a2 2 0 0 1 1.5-2Zm.4 2c.1 7.2 5 12.1 12.2 12.2l.5-1.8-2.4-.9-1.7 2-1-.4a17.2 17.2 0 0 1-6.5-6.5l-.4-1 2-1.7-.9-2.4L7 4.8Z"/></svg>
+            <span>(086) 18923936560</span>
+          </a>
+        </div>
+      </div>
+      <div class="about-details">
+        <div class="about-group">
+          <h3 class="about-heading">EDUCATION</h3>
+          <div class="about-group-content">
+            <div class="about-standard-entry">
+              <div class="about-standard-head">
+                <strong>Central Academy of Fine Arts (CAFA)</strong>
+                <span class="about-standard-location">Beijing, China</span>
+              </div>
+              <div class="about-standard-detail"><span>· <strong>Bachelor of Architecture (B.Arch)</strong></span><span class="about-standard-date">09/2022-06/2027</span></div>
+              <p class="about-standard-note">· GPA: 89.87/100 (ranking 3/57)</p>
+            </div>
+            <div class="about-standard-entry">
+              <div class="about-standard-head">
+                <strong>Technical University of Munich (TUM)</strong>
+                <span class="about-standard-location">Munich, Germany</span>
+              </div>
+              <div class="about-standard-detail"><span>· <strong>Exchange Program in Architecture and Design</strong></span><span class="about-standard-date">04/2026-09/2026</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-group">
+          <h3 class="about-heading">WORK</h3>
+          <div class="about-group-content">
+            <div class="about-standard-entry">
+              <div class="about-standard-head">
+                <strong>Beijing Thornless Cactus Art &amp; Design Co., Ltd.</strong>
+                <span class="about-standard-location">Beijing, China</span>
+              </div>
+              <div class="about-standard-detail"><span><em>Interaction Design Intern</em>, AI Game Project Team</span><span class="about-standard-date">12/2025-02/2026</span></div>
+            </div>
+            <div class="about-standard-entry">
+              <div class="about-standard-head">
+                <strong>Atelier Guo (Guo Liaohui Architects)</strong>
+                <span class="about-standard-location">Beijing, China</span>
+              </div>
+              <div class="about-standard-detail"><span><em>On-site Design Lead</em></span><span class="about-standard-date">07/2025-10/2025</span></div>
+            </div>
+            <div class="about-standard-entry">
+              <div class="about-standard-head">
+                <strong>Atelier Guo (Guo Liaohui Architects)</strong>
+                <span class="about-standard-location">Shanghai, China</span>
+              </div>
+              <div class="about-standard-detail"><span><em>Architectural Intern</em></span><span class="about-standard-date">12/2024-02/2025</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-group">
+          <h3 class="about-heading">PROJECT EXPERIENCE</h3>
+          <div class="about-group-content">
+            <article class="about-project-entry">
+              <div class="about-project-head">
+                <strong>Wave 2025 International Design Workshop</strong>
+                <span class="about-project-location">Venice, Italy</span>
+              </div>
+              <div class="about-project-role"><em>Team Leader</em> in WAVE 2025 CAFA Design Workshop <span class="about-project-date">06/2025-07/2025</span></div>
+              <ul class="about-project-bullets">
+                <li>Developed the team work <em>Color Forest</em> under this workshop project with the theme of New Space in Caochangdi, Beijing.</li>
+                <li>The workshop project was awarded <strong>First Prize</strong>.</li>
+                <li>The workshop project received official support from the <strong>19th Venice Biennale 2025</strong> and was exhibited in a parallel program at the <strong>Venice Biennale</strong>.</li>
+              </ul>
+            </article>
+            <article class="about-project-entry">
+              <div class="about-project-head">
+                <strong>CAFA-RPTU International Joint Workshop</strong>
+                <span class="about-project-location">Beijing, China</span>
+              </div>
+              <div class="about-project-role"><em>Design Team Member</em> <span class="about-project-date">09/2024</span></div>
+              <ul class="about-project-bullets">
+                <li>Contributed to the <em>Changxindian Community Service Center Design</em> project.</li>
+                <li>The project received the <strong>Fuyao Plan Design Excellence Award</strong>, issued by the Beijing Fengtai Cultural Tourism Co.Ltd.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="about-group">
+          <h3 class="about-heading">AWARDS</h3>
+          <div class="about-group-content">
+            <div class="about-entry"><strong>CAFA Outstanding Student Scholarship, 2022-2023, 2023-2024, 2024-2025, 2025-2026</strong></div>
+            <div class="about-entry"><strong>CAFA Thematic Creation Award, 2024</strong></div>
+            <div class="about-entry"><strong>CAFA Outstanding Coursework Award, 2023</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer page-shell">
+    <p class="footer-note">BOYU YANG / PORTFOLIO</p>
+    <a class="contact-link" href="mailto:hello@boyuyang.com">Get in touch<span aria-hidden="true">↗</span></a>
+  </footer>
+  
+  <script>
+    const portrait = document.querySelector('.hero-portrait');
+    const aboutPhotoPaper = document.querySelector('.about-photo-paper');
+    const canTilt = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+    const categoryButtons = [...document.querySelectorAll('[data-work-category]')];
+    const projectCards = [...document.querySelectorAll('.project-card[data-category]')];
+
+    function selectWorkCategory(category) {
+      categoryButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.workCategory === category));
+      });
+      projectCards.forEach((card) => {
+        card.hidden = card.dataset.category !== category;
+      });
+    }
+
+    categoryButtons.forEach((button) => {
+      button.addEventListener('click', () => selectWorkCategory(button.dataset.workCategory));
+    });
+    const initialCategory = categoryButtons.find((button) => button.getAttribute('aria-pressed') === 'true');
+    if (initialCategory) selectWorkCategory(initialCategory.dataset.workCategory);
+
+    if (aboutPhotoPaper && canTilt.matches) {
+      aboutPhotoPaper.addEventListener('pointermove', (event) => {
+        const bounds = aboutPhotoPaper.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        aboutPhotoPaper.style.setProperty('--paper-tilt-y', `${x * 12}deg`);
+        aboutPhotoPaper.style.setProperty('--paper-tilt-x', `${y * -10}deg`);
+        aboutPhotoPaper.style.setProperty('--paper-shift-x', `${x * 5}px`);
+        aboutPhotoPaper.style.setProperty('--paper-shift-y', `${y * 5}px`);
+      });
+
+      aboutPhotoPaper.addEventListener('pointerleave', () => {
+        aboutPhotoPaper.style.setProperty('--paper-tilt-x', '0deg');
+        aboutPhotoPaper.style.setProperty('--paper-tilt-y', '0deg');
+        aboutPhotoPaper.style.setProperty('--paper-shift-x', '0px');
+        aboutPhotoPaper.style.setProperty('--paper-shift-y', '0px');
+      });
+    }
+
+    if (portrait && canTilt.matches) {
+      portrait.addEventListener('pointermove', (event) => {
+        const bounds = portrait.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        portrait.style.setProperty('--tilt-x', `${x * 30}deg`);
+        portrait.style.setProperty('--tilt-y', `${y * -30}deg`);
+        portrait.style.setProperty('--shift-x', `${x * 12}px`);
+        portrait.style.setProperty('--shift-y', `${y * 12}px`);
+      });
+
+      portrait.addEventListener('pointerleave', () => {
+        portrait.style.setProperty('--tilt-x', '0deg');
+        portrait.style.setProperty('--tilt-y', '0deg');
+        portrait.style.setProperty('--shift-x', '0px');
+        portrait.style.setProperty('--shift-y', '0px');
+      });
+    }
+  </script>
+</body>
+</html>
