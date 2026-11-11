@@ -142,6 +142,11 @@ body.perceive-page {
   padding-bottom: clamp(72px, 10vw, 140px);
 }
 
+.project-gallery picture {
+  display: block;
+  width: 100%;
+}
+
 .project-gallery img {
   display: block;
   width: 100%;
