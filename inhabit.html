@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="cursor.css">
   <link rel="stylesheet" href="project.css">
   <link rel="preload" as="image" href="assets/project-details/inhabit/01-inhabit.avif" type="image/avif" fetchpriority="high">
+  <script src="detail-images.js" defer></script>
   <script src="project-navigation.js" defer></script>
 </head>
 <body>
@@ -30,9 +31,9 @@
       <a class="back-link" data-project-back href="index.html#work">← Selected work</a>
     </div>
     <section class="project-gallery" aria-label="Inhabit project images in order">
-      <picture><source type="image/avif" srcset="assets/project-details/inhabit/01-inhabit.avif"><img loading="eager" src="assets/project-details/inhabit/01-inhabit.jpg" alt="Inhabit project presentation image 1 of 3" decoding="async" fetchpriority="high"></picture>
-      <picture><source type="image/avif" srcset="assets/project-details/inhabit/02-inhabit.avif"><img loading="eager" src="assets/project-details/inhabit/02-inhabit.jpg" alt="Inhabit project presentation image 2 of 3" decoding="async" fetchpriority="low"></picture>
-      <picture><source type="image/avif" srcset="assets/project-details/inhabit/03-inhabit.avif"><img loading="eager" src="assets/project-details/inhabit/03-inhabit.jpg" alt="Inhabit project presentation image 3 of 3" decoding="async" fetchpriority="low"></picture>
+      <picture><source type="image/avif" srcset="assets/project-details/inhabit/01-inhabit.avif"><img loading="eager" src="assets/project-details/inhabit/01-inhabit.jpg" alt="Inhabit project presentation image 1 of 3" decoding="async" fetchpriority="high" width="5120" height="3641"></picture>
+      <picture data-deferred><source type="image/avif" data-srcset="assets/project-details/inhabit/02-inhabit.avif"><img data-src="assets/project-details/inhabit/02-inhabit.jpg" alt="Inhabit project presentation image 2 of 3" decoding="async" width="5120" height="3641"></picture>
+      <picture data-deferred><source type="image/avif" data-srcset="assets/project-details/inhabit/03-inhabit.avif"><img data-src="assets/project-details/inhabit/03-inhabit.jpg" alt="Inhabit project presentation image 3 of 3" decoding="async" width="5120" height="3641"></picture>
     </section>
     <nav class="project-bottom-nav" aria-label="Project navigation"><a class="back-link" data-project-back href="index.html#work">← Selected work</a></nav>
   </main>
