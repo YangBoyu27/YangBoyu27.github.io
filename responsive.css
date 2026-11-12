@@ -1,0 +1,182 @@
+/* Shared small-screen layout. Desktop typography and image proportions stay intact. */
+.portfolio-home { overflow-anchor: none; }
+@media (max-width: 1024px) {
+  html { scrollbar-gutter: auto; }
+  .page-shell, .nanping-page .page-shell {
+    padding-left: max(var(--page-gutter), env(safe-area-inset-left));
+    padding-right: max(var(--page-gutter), env(safe-area-inset-right));
+  }
+  .topbar { transform: none; }
+  .wordmark { flex: 0 0 38px; }
+  .nav a { min-height: 44px; justify-content: center; }
+  .detail-title-block { max-width: 100%; }
+  .project-info { flex-direction: column; gap: 8px; }
+  .project-meta { flex-basis: auto; max-width: none; text-align: left; }
+  .side-panel-header { padding-top: max(16px, env(safe-area-inset-top)); padding-right: max(22px, env(safe-area-inset-right)); }
+  .side-panel-scroll { padding-right: max(22px, env(safe-area-inset-right)); padding-bottom: max(40px, env(safe-area-inset-bottom)); }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .portfolio-home .hero {
+    min-height: 450px;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 28%);
+    gap: 24px;
+    padding-top: 48px;
+    padding-bottom: 64px;
+  }
+  .portfolio-home .portrait-interaction { width: 100%; margin-right: 8px; }
+  .portfolio-home .hero-intro { max-width: 320px; }
+  .side-panel { width: min(90vw, 820px); }
+  .side-panel[data-panel="contact"] { width: min(70vw, 560px); }
+  .side-panel .about-sidebar { grid-template-columns: minmax(150px, .7fr) minmax(0, 1.3fr); gap: 0 24px; }
+}
+
+@media (max-width: 640px) {
+  :root { --page-gutter: 16px; --np-gutter: 16px; }
+  .page-shell, .nanping-page .page-shell {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  .topbar {
+    height: auto;
+    min-height: 72px;
+    padding-top: env(safe-area-inset-top);
+    gap: 12px;
+  }
+  .wordmark { width: 36px; height: 44px; flex-basis: 36px; align-items: center; }
+  .wordmark img { height: 36px; }
+  .nav, .nanping-page .nav { gap: clamp(10px, 3vw, 18px); }
+  .nav a, .nanping-page .nav a {
+    font-size: clamp(14px, 4vw, 17px);
+    -webkit-text-stroke-width: 1.25px;
+    white-space: nowrap;
+  }
+  .portfolio-home .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+    gap: 22px 16px;
+    min-height: auto;
+    padding-top: 30px;
+    padding-bottom: 48px;
+  }
+  .hero-copy { display: contents; }
+  .hero-title-svg { grid-column: 1 / -1; margin-left: 0; width: 100%; }
+  .hero-intro {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+    margin: 0 0 8px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .portfolio-home .portrait-interaction {
+    grid-column: 2;
+    grid-row: 2;
+    width: min(100%, 174px);
+    align-self: center;
+    margin: 0;
+  }
+  .portrait-interaction .hero-portrait { max-height: 210px; }
+  .portrait-greeting { width: clamp(100px, 29vw, 128px); }
+  .section-heading { align-items: start; gap: 2px; padding: 10px 0 18px; }
+  .work-categories { width: 100%; gap: 0 18px; justify-content: space-between; }
+  .work-category {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: clamp(14px, 3.9vw, 18px);
+    line-height: 1.35;
+    -webkit-text-stroke-width: .9px;
+  }
+  .work-count { font-size: 10px; }
+  .project-grid { row-gap: 34px; }
+  .project-image { aspect-ratio: 1.5 / 1; }
+  .project-info { padding-top: 12px; gap: 5px; }
+  .project-title { font-size: 21px; line-height: 1.25; }
+  .project-type { font-size: 12px; line-height: 1.65; }
+  .project-meta { font-size: 11px; line-height: 1.6; }
+  .work-section { padding-bottom: 64px; }
+  .footer { gap: 16px; flex-wrap: wrap; padding-block: 18px max(18px, env(safe-area-inset-bottom)); }
+  .footer-note { font-size: 10px; }
+  .contact-link { display: inline-flex; align-items: center; min-height: 44px; }
+
+  .project-heading { gap: 18px; padding-top: 28px; padding-bottom: 28px; }
+  .detail-title-block { width: 100%; }
+  .detail-title-svg,
+  .skyscraper-page .detail-title-svg,
+  .folded-mountains-page .detail-title-svg,
+  .nanping-page .detail-title-svg { width: 100%; max-width: 100%; }
+  .detail-subtitle { font-size: 12px; line-height: 1.8; margin-top: 14px; }
+  .back-link { display: inline-flex; align-items: center; min-height: 44px; padding-block: 10px; }
+  .project-gallery { gap: 12px; padding-bottom: 40px; }
+  .project-gallery picture, .project-gallery img { max-width: 100%; }
+  .skyscraper-page .project-gallery, .folded-mountains-page .project-gallery { margin-inline: -8px; }
+  .project-bottom-nav { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+  .he-film-heading { align-items: start; }
+  .he-film-quality select { min-height: 44px; font-size: 16px; }
+  .he-film-footer { flex-wrap: wrap; }
+
+  .np-header { margin-inline: 0; }
+  .np-header .np-chapters { margin-inline: 0; }
+  .np-chapters { gap: 0 16px; padding-top: 16px; }
+  .np-chapters a { display: inline-flex; align-items: center; min-height: 44px; }
+  .np-group { padding-top: 42px; }
+  .np-group-head { margin-bottom: 16px; }
+  .np-group-name { min-width: 0; }
+  .np-group h2 { font-size: 21px; }
+  .np-track { --np-slide-width: calc(100% - 24px); }
+  .np-slide figcaption { gap: 8px; flex-wrap: wrap; }
+  .np-controls { gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .np-swipe-hint { font-size: 10px; margin-right: 4px; }
+  .np-arrow { width: 44px; height: 44px; }
+  .np-bottom { flex-wrap: wrap; gap: 16px; padding-top: 28px; margin-top: 36px; }
+
+  .side-panel, .side-panel[data-panel="contact"] {
+    width: calc(100% - 16px);
+    height: 100%;
+    height: 100dvh;
+  }
+  .side-panel-header {
+    padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 12px 16px;
+    gap: 8px;
+  }
+  .side-panel-actions { gap: 12px; }
+  .side-panel-action { min-height: 44px; font-size: 12px; }
+  .side-panel-scroll { padding: 24px max(20px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) 20px; }
+  .side-panel .about-photo-paper { width: min(62%, 200px); margin-bottom: 28px; }
+  .side-panel .about-identity { margin-bottom: 18px; }
+  .side-panel .about-name { font-size: 24px; }
+  .side-panel .about-intro { font-size: 14px; line-height: 1.75; text-align: start; overflow-wrap: normal; }
+  .side-panel .about-intro p { margin-bottom: 10px; }
+  .side-panel .about-heading { font-size: 13px; }
+  .side-panel .about-group { gap: 14px; margin-bottom: 28px; }
+  .side-panel .about-standard-head strong,
+  .side-panel .about-project-head strong,
+  .side-panel .about-entry strong { font-size: 14px; }
+  .side-panel .about-standard-detail > span:first-child,
+  .side-panel .about-project-role,
+  .side-panel .about-project-bullets,
+  .side-panel .about-standard-note { font-size: 13px; line-height: 1.7; }
+  .side-panel .about-standard-detail .about-standard-date,
+  .side-panel .about-project-role .about-project-date { margin-left: 0; margin-top: 4px; }
+  .side-panel .about-standard-location, .side-panel .about-project-location,
+  .side-panel .about-standard-date, .side-panel .about-project-date { font-size: 11px; white-space: normal; }
+  .side-panel .about-entry { grid-template-columns: minmax(0, 1fr); row-gap: 5px; }
+  .side-panel .about-date { white-space: normal; }
+  .side-panel .about-skills-group .about-skills { gap: 20px 12px; }
+  .side-panel .about-skill-icon { width: 36px; height: 36px; opacity: 1; }
+  .side-contact { padding-top: 18px; }
+  .side-panel .side-contact .about-contact a { min-height: 64px; gap: 12px; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .portfolio-cursor-dot { display: none !important; }
+  .nav a:hover { transform: none; }
+  .hero-portrait { will-change: auto; }
+  .hero-portrait:hover { --portrait-scale: 1; filter: none; }
+  .about-photo-paper { animation: none; will-change: auto; }
+  .project-card:hover .project-image img { transform: none; }
+  .nav a:active { -webkit-text-fill-color: var(--ink); }
+  .hero-title-svg tspan:active, .detail-title-svg tspan:active { fill: var(--ink); }
+  .detail-title-svg .title-orange:active { fill: #ff7615; }
+  .detail-title-svg .title-blue:active { fill: #00b9e8; }
+}

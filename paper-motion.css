@@ -1,0 +1,158 @@
+/* Dotted paper belongs to the homepage; detail pages retain solid backgrounds. */
+body {
+  --paper-dot: rgb(24 24 24 / 15%);
+  background-color: var(--paper, #fff);
+}
+
+body.portfolio-home {
+  background-image: radial-gradient(circle, var(--paper-dot) .75px, transparent .95px);
+  background-size: 22px 22px;
+  background-position: 11px 11px;
+}
+
+.portfolio-home .hero { position: relative; }
+.portrait-interaction {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: min(100%, clamp(220px, 19vw, 300px));
+  margin-right: clamp(12px, 1.5vw, 24px);
+  justify-self: end;
+}
+.portrait-interaction .hero-portrait { width: 100%; margin-right: 0; }
+.portrait-greeting {
+  position: absolute;
+  width: clamp(125px, 14.5vw, 210px);
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+  object-fit: contain;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px) rotate(-3deg);
+  transition: opacity .16s ease, transform .2s ease, visibility 0s linear .16s;
+}
+.portrait-greeting.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotate(0);
+  transition-delay: 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-greeting { transform: none; transition: none; }
+}
+@media (max-width: 640px) {
+  .portrait-interaction { width: min(47vw, 193px); margin-right: 0; }
+  .portrait-interaction .hero-portrait { width: 100%; }
+}
+
+/* Solid paper under outlined words also protects the counters in A, B, O, etc. */
+.nav a, .work-category { background-color: var(--paper); }
+.hero-title-svg, .detail-title-svg { background-color: var(--paper); }
+.hero-title-svg.letter-paper-ready,
+.detail-title-svg.letter-paper-ready { background-color: transparent; }
+.letter-paper { fill: var(--paper); stroke: none; pointer-events: none; }
+
+.portfolio-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  border-radius: 50%;
+  background: #000;
+  box-shadow: none;
+  pointer-events: none;
+  z-index: 2147483647;
+  opacity: 0;
+}
+.portfolio-cursor-dot.is-visible { opacity: 1; }
+.portfolio-cursor-dot.is-white { background: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  html.cursor-dot-enabled,
+  html.cursor-dot-enabled *,
+  html.cursor-dot-enabled *::before,
+  html.cursor-dot-enabled *::after { cursor: none !important; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body, body * { cursor: var(--cursor-black); }
+  input, textarea, [contenteditable="true"] { cursor: text; }
+  .hero-title-svg tspan, .detail-title-svg tspan,
+  .work-category, .np-track, .np-track.is-dragging { cursor: var(--cursor-dot); }
+  .hero-title-svg tspan:hover,
+  .detail-title-svg tspan:not(.title-orange):not(.title-blue):hover,
+  .nav a:hover, .work-category:hover,
+  .work-category[aria-pressed="true"] { cursor: var(--cursor-on-fill); }
+  .perceive-page .detail-title-svg tspan:hover,
+  .perceive-page .nav a:hover { cursor: var(--cursor-black); }
+}
+
+.paper-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+  z-index: 100;
+}
+
+@supports (animation-timeline: scroll()) {
+  .paper-progress {
+    animation: paper-reading-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes paper-reading-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Individual translate avoids overriding portrait tilt and carousel transforms. */
+.paper-reveal {
+  transition: opacity .55s ease, translate .7s cubic-bezier(.2, .7, .2, 1);
+}
+.paper-reveal.is-waiting { opacity: 0; translate: 0 24px; }
+.paper-reveal.is-in-view { opacity: 1; translate: 0 0; }
+.paper-reveal:focus-within { opacity: 1; translate: 0 0; }
+.hero-portrait.paper-reveal {
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), filter .35s ease,
+    opacity .55s ease, translate .7s cubic-bezier(.2, .7, .2, 1);
+}
+.about-photo-paper.paper-reveal {
+  transition: box-shadow .3s ease, transform .2s ease-out,
+    opacity .55s ease, translate .7s cubic-bezier(.2, .7, .2, 1);
+}
+
+.project-link:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
+.project-title { transition: translate .25s ease; }
+@media (hover: hover) and (pointer: fine) {
+  .project-link:hover .project-title { translate: 4px 0; }
+}
+
+.back-link { transition: color .2s ease, translate .2s ease; }
+.back-link:hover { translate: -3px 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .paper-reveal, .paper-reveal.is-waiting, .paper-reveal.is-in-view {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+  .paper-progress { display: none; }
+  .project-title, .back-link { transition: none; translate: none !important; }
+}
+
+@media print {
+  .portfolio-cursor-dot { display: none; }
+  body.portfolio-home { background-image: none; }
+  .paper-progress { display: none; }
+  .paper-reveal.is-waiting { opacity: 1; translate: none; }
+}

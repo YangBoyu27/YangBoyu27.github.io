@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Boyu Yang portfolio.">
   <title>Boyu Yang</title>
@@ -253,9 +253,11 @@
 
     .project-grid {
       display: grid;
+      width: 100%;
+      margin-inline: auto;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: clamp(18px, 2.5vw, 36px);
-      row-gap: clamp(24px, 4vw, 56px);
+      column-gap: clamp(28px, 4vw, 64px);
+      row-gap: clamp(36px, 4.5vw, 72px);
     }
 
     .project-card { min-width: 0; }
@@ -264,7 +266,7 @@
 
     .project-image {
       position: relative;
-      aspect-ratio: 1.44 / 1;
+      aspect-ratio: 1.5 / 1;
       overflow: hidden;
       background: #fafaf8;
     }
@@ -639,8 +641,8 @@
       .work-category { font-size: 15px; }
       .hero-title-svg { margin-left: -2px; }
       .hero-portrait { width: min(47vw, 193px); max-height: 231px; }
-      .project-grid { grid-template-columns: 1fr; row-gap: 43px; }
-      .project-image { aspect-ratio: 1.25 / 1; }
+      .project-grid { width: 100%; grid-template-columns: 1fr; row-gap: 48px; }
+      .project-image { aspect-ratio: 1.3 / 1; }
       .project-info { flex-direction: column; gap: 8px; }
       .project-meta { max-width: none; text-align: left; }
       .about-section { grid-template-columns: 1fr; gap: 26px; }
@@ -671,8 +673,15 @@
       .about-entry:hover strong, .about-contact a:hover { color: inherit; }
     }
   </style>
+  <link rel="stylesheet" href="paper-motion.css?v=greeting-photo-size-1">
+  <script src="paper-motion.js" defer></script>
+  <script src="cursor-dot.js" defer></script>
+  <script src="portrait-greeting.js?v=mobile-1" defer></script>
+  <link rel="stylesheet" href="side-panels.css?v=pink-headings-no-hyphens-1">
+  <script src="side-panels.js" defer></script>
+  <link rel="stylesheet" href="responsive.css?v=mobile-1">
 </head>
-<body>
+<body class="portfolio-home">
   <header class="topbar page-shell">
     <a class="wordmark" href="#top" aria-label="Boyu Yang, home"><img decoding="async" src="assets/profile.png" alt=""></a>
     <nav class="nav" aria-label="Main navigation">
@@ -690,7 +699,10 @@
         </svg>
         <p class="hero-intro">A designer who enjoys exploring different mediums to create.</p>
       </div>
-      <img decoding="async" class="hero-portrait" src="assets/profile.png" alt="">
+      <div class="portrait-interaction">
+        <img decoding="async" class="hero-portrait" src="assets/profile.png" alt="">
+        <img class="portrait-greeting" src="assets/portrait-hallo.png" width="508" height="306" alt="" aria-hidden="true" decoding="async">
+      </div>
     </section>
 
     <section id="work" class="work-section" aria-labelledby="work-title">
@@ -705,7 +717,7 @@
       <div id="project-grid" class="project-grid">
         <article class="project-card" data-category="interaction-industrial">
           <a class="project-link" href="inhabit.html" aria-label="View Inhabit project">
-            <div class="project-image"><picture><source type="image/avif" srcset="assets/covers/inhabit.avif"><img src="assets/covers/inhabit.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Inhabit project cover"></picture></div>
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/inhabit-mobile-768.webp 768w, assets/covers/inhabit-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><source type="image/avif" srcset="assets/covers/inhabit.avif"><img src="assets/covers/inhabit.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Inhabit project cover"></picture></div>
             <div class="project-info">
               <div class="project-copy">
                 <h3 class="project-title">Inhabit</h3>
@@ -717,7 +729,7 @@
         </article>
         <article class="project-card" data-category="interaction-industrial">
           <a class="project-link" href="express.html" aria-label="View Express project">
-            <div class="project-image"><picture><source type="image/avif" srcset="assets/covers/express.avif"><img src="assets/covers/express.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Express project cover"></picture></div>
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/express-mobile-768.webp 768w, assets/covers/express-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><source type="image/avif" srcset="assets/covers/express.avif"><img src="assets/covers/express.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Express project cover"></picture></div>
             <div class="project-info">
               <div class="project-copy">
                 <h3 class="project-title">Express</h3>
@@ -729,7 +741,7 @@
         </article>
         <article class="project-card" data-category="interaction-industrial">
           <a class="project-link" href="lumo.html" aria-label="View LUMO project">
-            <div class="project-image"><picture><source type="image/avif" srcset="assets/covers/lumo.avif"><img src="assets/covers/lumo.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="LUMO project cover"></picture></div>
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/lumo-mobile-768.webp 768w, assets/covers/lumo-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><source type="image/avif" srcset="assets/covers/lumo.avif"><img src="assets/covers/lumo.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="LUMO project cover"></picture></div>
             <div class="project-info">
               <div class="project-copy">
                 <h3 class="project-title">LUMO</h3>
@@ -741,7 +753,7 @@
         </article>
         <article class="project-card" data-category="interaction-industrial">
           <a class="project-link" href="perceive.html" aria-label="View Perceive project">
-            <div class="project-image"><picture><source type="image/avif" srcset="assets/covers/perceive.avif"><img src="assets/covers/perceive.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Perceive project cover"></picture></div>
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/perceive-mobile-768.webp 768w, assets/covers/perceive-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><source type="image/avif" srcset="assets/covers/perceive.avif"><img src="assets/covers/perceive.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="Perceive project cover"></picture></div>
             <div class="project-info">
               <div class="project-copy">
                 <h3 class="project-title">Perceive</h3>
@@ -753,7 +765,7 @@
         </article>
         <article class="project-card" data-category="interaction-industrial">
           <a class="project-link" href="he-seating.html" aria-label="View Hé Seating project">
-            <div class="project-image"><picture><source type="image/avif" srcset="assets/covers/he-seating.avif"><img src="assets/covers/he-seating.jpg" width="1920" height="1168" loading="lazy" decoding="async" alt="Hé Seating project cover"></picture></div>
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/he-seating-mobile-768.webp 768w, assets/covers/he-seating-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><source type="image/avif" srcset="assets/covers/he-seating.avif"><img src="assets/covers/he-seating.jpg" width="1920" height="1168" loading="lazy" decoding="async" alt="Hé Seating project cover"></picture></div>
             <div class="project-info">
               <div class="project-copy">
                 <h3 class="project-title">Hé Seating</h3>
@@ -765,7 +777,7 @@
         </article>
         <article class="project-card" data-category="interaction-industrial">
           <a class="project-link" href="malgic-kitchen.html" aria-label="View mAlgic Kitchen project">
-            <div class="project-image"><picture><source type="image/avif" srcset="assets/covers/malgic-kitchen.avif"><img src="assets/covers/malgic-kitchen.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="mAlgic KItchen project cover"></picture></div>
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/malgic-kitchen-mobile-768.webp 768w, assets/covers/malgic-kitchen-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><source type="image/avif" srcset="assets/covers/malgic-kitchen.avif"><img src="assets/covers/malgic-kitchen.jpg" width="1920" height="1334" loading="lazy" decoding="async" alt="mAlgic KItchen project cover"></picture></div>
             <div class="project-info">
               <div class="project-copy">
                 <h3 class="project-title">mAlgic KItchen</h3>
@@ -777,7 +789,7 @@
         </article>
         <article class="project-card" data-category="architecture">
           <a class="project-link" href="kill-the-skyscraper.html" aria-label="View Kill the skyscraper project">
-            <div class="project-image"><picture><source type="image/avif" srcset="assets/covers/kill-the-skyscraper.avif"><img src="assets/covers/kill-the-skyscraper.jpg" width="1440" height="900" loading="lazy" decoding="async" alt="Kill the skyscraper project cover"></picture></div>
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/kill-the-skyscraper-mobile-768.webp 768w, assets/covers/kill-the-skyscraper-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><source type="image/avif" srcset="assets/covers/kill-the-skyscraper.avif"><img src="assets/covers/kill-the-skyscraper.jpg" width="1440" height="900" loading="lazy" decoding="async" alt="Kill the skyscraper project cover"></picture></div>
             <div class="project-info">
               <div class="project-copy">
                 <h3 class="project-title">Kill the skyscraper</h3>
@@ -789,7 +801,7 @@
         </article>
         <article class="project-card" data-category="architecture">
           <a class="project-link" href="folded-mountains.html" aria-label="View Folded Mountains, Winding Paths project">
-            <div class="project-image"><picture><source type="image/avif" srcset="assets/covers/folded-mountains.avif"><img src="assets/covers/folded-mountains.jpg" width="3674" height="2588" loading="lazy" decoding="async" alt="Folded Mountains, Winding Paths project cover"></picture></div>
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/folded-mountains-mobile-768.webp 768w, assets/covers/folded-mountains-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><source type="image/avif" srcset="assets/covers/folded-mountains.avif"><img src="assets/covers/folded-mountains.jpg" width="3674" height="2588" loading="lazy" decoding="async" alt="Folded Mountains, Winding Paths project cover"></picture></div>
             <div class="project-info">
               <div class="project-copy">
                 <h3 class="project-title">Folded Mountains, Winding Paths</h3>
@@ -799,136 +811,21 @@
             </div>
           </a>
         </article>
+        <article class="project-card" data-category="architecture">
+          <a class="project-link" href="nanping-cultural-center.html" aria-label="View Nanping Cultural Center project">
+            <div class="project-image"><picture><source media="(max-width: 1024px)" type="image/webp" srcset="assets/covers/nanping-cultural-center-mobile-768.webp 768w, assets/covers/nanping-cultural-center-mobile-1280.webp 1280w" sizes="(max-width: 640px) calc(100vw - 32px), calc((100vw - 64px) / 2)"><img src="assets/covers/nanping-cultural-center.webp" width="1920" height="1334" loading="lazy" decoding="async" alt="Nanping Cultural Center courtyard view"></picture></div>
+            <div class="project-info"><div class="project-copy"><h3 class="project-title">Nanping Cultural Center</h3><p class="project-type">Architecture | Cultural Center</p></div><p class="project-meta">Individual Work | 2024.09-2024.11</p></div>
+          </a>
+        </article>
       </div>
     </section>
 
-    <section id="about" class="about-section" aria-labelledby="about-title">
-      <div class="about-sidebar">
-        <h2 id="about-title" class="about-title">ABOUT ME</h2>
-        <div class="about-photo-paper" aria-label="Portrait photograph of Boyu Yang">
-          <img loading="lazy" decoding="async" width="628" height="682" class="about-photo" src="assets/about-photo.png" alt="Boyu Yang in Beijing">
-        </div>
-        <div class="about-identity">
-          <p class="about-name">BOYU YANG</p>
-          <p class="about-address">BEIJING, CHINA</p>
-        </div>
-        <p class="about-skills-label">Design &amp; Technical</p>
-        <div class="about-skills" aria-label="Design and technical skills">
-          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/arduino.svg" alt=""><span>Arduino</span></div>
-          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/unity.svg" alt=""><span>Unity</span></div>
-          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/rhino.svg" alt=""><span>Rhino</span></div>
-          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/blender.svg" alt=""><span>Blender</span></div>
-          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/sketchup.svg" alt=""><span>SketchUp</span></div>
-          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/autocad.svg" alt=""><span>AutoCAD</span></div>
-          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/photoshop.svg" alt=""><span>Photoshop</span></div>
-          <div class="about-skill"><img class="about-skill-icon" src="assets/software-icons/figma.svg" alt=""><span>Figma</span></div>
-        </div>
-        <div class="about-contact" aria-label="Contact information">
-          <h3 class="about-contact-title">CONTACT</h3>
-          <a href="mailto:boyuyang@yeah.net">
-            <svg class="about-contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8.2L4.7 7H4v10h16V7h-.7L12 13.2Zm0-2.1L19.1 7H4.9l7.1 4.1Z"/></svg>
-            <span>boyuyang@yeah.net</span>
-          </a>
-          <a href="tel:+8618923936560">
-            <svg class="about-contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.8 9.4 2a1.7 1.7 0 0 1 2 1l1.2 3.1a1.7 1.7 0 0 1-.5 1.9l-1.7 1.4a15.4 15.4 0 0 0 5.2 5.2l1.4-1.7a1.7 1.7 0 0 1 1.9-.5l3.1 1.2a1.7 1.7 0 0 1 1 2l-.8 2.8a2 2 0 0 1-2 1.5C10.4 20 4 13.6 4.1 4.8a2 2 0 0 1 1.5-2Zm.4 2c.1 7.2 5 12.1 12.2 12.2l.5-1.8-2.4-.9-1.7 2-1-.4a17.2 17.2 0 0 1-6.5-6.5l-.4-1 2-1.7-.9-2.4L7 4.8Z"/></svg>
-            <span>(086) 18923936560</span>
-          </a>
-        </div>
-      </div>
-      <div class="about-details">
-        <div class="about-group">
-          <h3 class="about-heading">EDUCATION</h3>
-          <div class="about-group-content">
-            <div class="about-standard-entry">
-              <div class="about-standard-head">
-                <strong>Central Academy of Fine Arts (CAFA)</strong>
-                <span class="about-standard-location">Beijing, China</span>
-              </div>
-              <div class="about-standard-detail"><span>· <strong>Bachelor of Architecture (B.Arch)</strong></span><span class="about-standard-date">09/2022-06/2027</span></div>
-              <p class="about-standard-note">· GPA: 89.87/100 (ranking 3/57)</p>
-            </div>
-            <div class="about-standard-entry">
-              <div class="about-standard-head">
-                <strong>Technical University of Munich (TUM)</strong>
-                <span class="about-standard-location">Munich, Germany</span>
-              </div>
-              <div class="about-standard-detail"><span>· <strong>Exchange Program in Architecture and Design</strong></span><span class="about-standard-date">04/2026-09/2026</span></div>
-            </div>
-          </div>
-        </div>
 
-        <div class="about-group">
-          <h3 class="about-heading">WORK</h3>
-          <div class="about-group-content">
-            <div class="about-standard-entry">
-              <div class="about-standard-head">
-                <strong>Beijing Thornless Cactus Art &amp; Design Co., Ltd.</strong>
-                <span class="about-standard-location">Beijing, China</span>
-              </div>
-              <div class="about-standard-detail"><span><em>Interaction Design Intern</em>, AI Game Project Team</span><span class="about-standard-date">12/2025-02/2026</span></div>
-            </div>
-            <div class="about-standard-entry">
-              <div class="about-standard-head">
-                <strong>Atelier Guo (Guo Liaohui Architects)</strong>
-                <span class="about-standard-location">Beijing, China</span>
-              </div>
-              <div class="about-standard-detail"><span><em>On-site Design Lead</em></span><span class="about-standard-date">07/2025-10/2025</span></div>
-            </div>
-            <div class="about-standard-entry">
-              <div class="about-standard-head">
-                <strong>Atelier Guo (Guo Liaohui Architects)</strong>
-                <span class="about-standard-location">Shanghai, China</span>
-              </div>
-              <div class="about-standard-detail"><span><em>Architectural Intern</em></span><span class="about-standard-date">12/2024-02/2025</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-group">
-          <h3 class="about-heading">PROJECT EXPERIENCE</h3>
-          <div class="about-group-content">
-            <article class="about-project-entry">
-              <div class="about-project-head">
-                <strong>Wave 2025 International Design Workshop</strong>
-                <span class="about-project-location">Venice, Italy</span>
-              </div>
-              <div class="about-project-role"><em>Team Leader</em> in WAVE 2025 CAFA Design Workshop <span class="about-project-date">06/2025-07/2025</span></div>
-              <ul class="about-project-bullets">
-                <li>Developed the team work <em>Color Forest</em> under this workshop project with the theme of New Space in Caochangdi, Beijing.</li>
-                <li>The workshop project was awarded <strong>First Prize</strong>.</li>
-                <li>The workshop project received official support from the <strong>19th Venice Biennale 2025</strong> and was exhibited in a parallel program at the <strong>Venice Biennale</strong>.</li>
-              </ul>
-            </article>
-            <article class="about-project-entry">
-              <div class="about-project-head">
-                <strong>CAFA-RPTU International Joint Workshop</strong>
-                <span class="about-project-location">Beijing, China</span>
-              </div>
-              <div class="about-project-role"><em>Design Team Member</em> <span class="about-project-date">09/2024</span></div>
-              <ul class="about-project-bullets">
-                <li>Contributed to the <em>Changxindian Community Service Center Design</em> project.</li>
-                <li>The project received the <strong>Fuyao Plan Design Excellence Award</strong>, issued by the Beijing Fengtai Cultural Tourism Co.Ltd.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-
-        <div class="about-group">
-          <h3 class="about-heading">AWARDS</h3>
-          <div class="about-group-content">
-            <div class="about-entry"><strong>CAFA Outstanding Student Scholarship, 2022-2023, 2023-2024, 2024-2025, 2025-2026</strong></div>
-            <div class="about-entry"><strong>CAFA Thematic Creation Award, 2024</strong></div>
-            <div class="about-entry"><strong>CAFA Outstanding Coursework Award, 2023</strong></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
   </main>
 
   <footer id="contact" class="footer page-shell">
     <p class="footer-note">BOYU YANG / PORTFOLIO</p>
-    <a class="contact-link" href="mailto:hello@boyuyang.com">Get in touch<span aria-hidden="true">↗</span></a>
+    <a class="contact-link" href="#contact">Get in touch<span aria-hidden="true">↗</span></a>
   </footer>
   
   <script>
@@ -939,6 +836,8 @@
     const projectCards = [...document.querySelectorAll('.project-card[data-category]')];
 
     function selectWorkCategory(category) {
+      document.querySelector('.work-count').textContent = category === 'architecture'
+        ? 'Projects / 2024-2026' : 'Projects / 2025-2026';
       categoryButtons.forEach((button) => {
         button.setAttribute('aria-pressed', String(button.dataset.workCategory === category));
       });
@@ -991,6 +890,6 @@
       });
     }
   </script>
-  <script src="project-navigation.js" defer></script>
+  <script src="project-navigation.js?v=mobile-1" defer></script>
 </body>
 </html>

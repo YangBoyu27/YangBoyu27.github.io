@@ -3,6 +3,7 @@
   const grid = document.getElementById('project-grid');
 
   if (grid) {
+    history.scrollRestoration = 'manual';
     const restore = () => {
       const saved = history.state?.portfolioWork;
       if (!saved) return;
